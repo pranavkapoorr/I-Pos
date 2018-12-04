@@ -26,7 +26,8 @@ class _MposHomeState extends State<MposHome>{
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-        title: new Text("ALTAPAY-LINK",style: new TextStyle(fontSize:30.0,color: Theme.of(context).accentColor),),),
+          elevation: 0.0,
+        title: new Text("A-POS",style: new TextStyle(fontSize:30.0,color: Theme.of(context).accentColor),),),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(onTap: onTabTapped,
         currentIndex: _currentIndex,

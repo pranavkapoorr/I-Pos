@@ -21,10 +21,7 @@ class _SettingsState extends State<Settings>{
   Widget build(BuildContext context){
     Size deviceSize = MediaQuery.of(context).size;
     return Container(
-      child: new Scaffold(
-        backgroundColor: Colors.transparent,
-
-        body: Padding(
+      child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: BoxDecoration(
@@ -59,7 +56,7 @@ class _SettingsState extends State<Settings>{
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(color: Colors.grey.shade200),
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
+                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
                             ),
                             child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),)
                         ),
@@ -212,9 +209,9 @@ class _SettingsState extends State<Settings>{
                               BorderRadius.all(Radius.circular(8.0)),
                               AboutListTile(
                                 icon: Icon(Icons.info,color:Colors.black),
-                                applicationName: "A-Pos",
+                                applicationName: "A-POS",
                                 applicationIcon: Icon(Icons.people,color: Colors.grey),
-                                child: Text("A-Pos",style: TextStyle(color: Colors.black,fontSize: 14.0,fontWeight: FontWeight.normal)),
+                                child: Text("A-POS",style: TextStyle(color: Colors.black,fontSize: 14.0,fontWeight: FontWeight.normal)),
                               ),
                             )
                           ],
@@ -227,7 +224,6 @@ class _SettingsState extends State<Settings>{
             ),
           ),
         ),
-      ),
     );
   }
 
