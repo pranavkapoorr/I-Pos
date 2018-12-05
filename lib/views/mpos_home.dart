@@ -32,7 +32,7 @@ class _MposHomeState extends State<MposHome>{
       bottomNavigationBar: BottomNavigationBar(onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.cloud_circle), title: Text("Sounds")),
+          BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text("Pos")),
           BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text("Settings")),
         ],
         fixedColor: Colors.deepOrange.shade400

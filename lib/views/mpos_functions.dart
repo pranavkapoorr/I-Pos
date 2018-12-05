@@ -65,38 +65,53 @@ class _MposFunctionsState extends State<MposFunctions>{
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(decoration: new InputDecoration(hintText: "Transaction Reference",hintStyle: TextStyle(color: Colors.white,),prefixIcon: Icon(Icons.note,color: Colors.white,)),),
                 ),*/
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REVERSAL",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("FIRST DLL",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("UPDATE DLL",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PED BALANCE",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("END OF DAY",style: TextStyle(color: Colors.grey),)))),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PROBE PED",style: TextStyle(color: Colors.grey),)))),
-                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.white30,
+                    shape: BoxShape.rectangle
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  margin: EdgeInsets.all(8.0),
+                  child: new ListView(
+                    shrinkWrap: true,
+                    children: <Widget>[
+
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REVERSAL",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("FIRST DLL",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("UPDATE DLL",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PED BALANCE",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("END OF DAY",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PROBE PED",style: TextStyle(color: Colors.grey),)))),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
