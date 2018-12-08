@@ -1,15 +1,30 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget{
   @override
   _SettingsState createState() => new _SettingsState();
 }
 class _SettingsState extends State<Settings>{
+  SharedPreferences sp;
+  String ip = "";
+  int port = 0;
+  TextEditingController ipCtrl, portCtrl;
 
   @override
   void initState() {
+    _loadIpPort();
+    ipCtrl = new TextEditingController();
+    portCtrl = new TextEditingController();
     super.initState();
+  }
+
+  _loadIpPort()async{
+    sp = await SharedPreferences.getInstance();
+    ip = sp.getString("ip");
+    port = sp.getInt("port");
+    print("loaded $ip and $port");
   }
 
   @override
@@ -45,7 +60,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: ipCtrl,)
                         ),
                       ),
                       Padding(
@@ -58,7 +73,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: portCtrl,)
                         ),
                       ),
                       Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)

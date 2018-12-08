@@ -1,7 +1,12 @@
 import 'package:altapay_link_mpos/views/mpos_home.dart';
 import 'package:flutter/material.dart';
+import 'package:altapay_link_mpos/utils/tcp.dart';
 
-void main() => runApp(new MyApp());
+
+void main() {
+  connection.initialize();
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
