@@ -1,3 +1,4 @@
+import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:flutter/material.dart';
 class MposFunctions extends StatefulWidget {
   @override
@@ -79,7 +80,9 @@ class _MposFunctionsState extends State<MposFunctions>{
 
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"amount":"120000","transactionReference":"18X32AMIT-156462","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"300"}');
+                        }, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),

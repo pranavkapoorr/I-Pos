@@ -1,10 +1,23 @@
 import 'package:altapay_link_mpos/views/mpos_home.dart';
 import 'package:flutter/material.dart';
 import 'package:altapay_link_mpos/utils/tcp.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-void main() {
-  connection.initialize();
+
+SharedPreferences sp;
+var ip, port;
+
+void main()async{
+  sp = await SharedPreferences.getInstance();
+  ip = sp.getString("ip");
+  port = sp.getInt("port");
+  print("lodaded ip nd port : $ip and $port");
+  if(ip == null && port == null){
+    sp.setString("ip", "0.0.0.0").whenComplete(()=>ip = "0.0.0.0");
+    sp.setInt("port", 8080).whenComplete(()=>port = 8080);
+  }
+  connection.connect("192.168.0.69", port);
   runApp(new MyApp());
 }
 
