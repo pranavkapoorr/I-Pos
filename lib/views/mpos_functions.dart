@@ -7,11 +7,13 @@ class MposFunctions extends StatefulWidget {
 }
 
 class _MposFunctionsState extends State<MposFunctions>{
-
+  TextEditingController _amount, _transactionReference;
 
   @override
   void initState() {
     super.initState();
+    _amount = new TextEditingController();
+    _transactionReference = new TextEditingController();
   }
 
 
@@ -81,7 +83,7 @@ class _MposFunctionsState extends State<MposFunctions>{
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"120000","transactionReference":"18X32AMIT-156462","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"300"}');
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"300"}');
                         }, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
@@ -122,6 +124,13 @@ class _MposFunctionsState extends State<MposFunctions>{
       )
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _amount.dispose();
+    _transactionReference.dispose();
+    super.dispose();
   }
 
   }

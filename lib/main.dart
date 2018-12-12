@@ -6,18 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 SharedPreferences sp;
-var ip, port;
+var sIp, sPort, pIp, pPort;
 
 void main()async{
   sp = await SharedPreferences.getInstance();
-  ip = sp.getString("ip");
-  port = sp.getInt("port");
-  print("lodaded ip nd port : $ip and $port");
-  if(ip == null && port == null){
-    sp.setString("ip", "0.0.0.0").whenComplete(()=>ip = "0.0.0.0");
-    sp.setInt("port", 8080).whenComplete(()=>port = 8080);
+  sIp = sp.getString("sPort");
+  sPort = sp.getInt("sPort");
+  pIp = sp.getString("pPort");
+  pPort = sp.getInt("pPort");
+  print("lodaded ip nd port : $sIp and $sPort");
+  if(sIp != null && sPort != null && pIp !=null && pPort!=null){
+    connection.connect("192.168.0.69", sPort);
   }
-  connection.connect("192.168.0.69", port);
   runApp(new MyApp());
 }
 

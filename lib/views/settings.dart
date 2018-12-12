@@ -14,18 +14,23 @@ class _SettingsState extends State<Settings>{
 
   @override
   void initState() {
-    _loadIpPort();
-    ipCtrl = new TextEditingController();
-    portCtrl = new TextEditingController();
+    SharedPreferences.getInstance().then((sP){
+        this.sp = sP;
+        ip = sp.getString("ip");
+        port = sp.getInt("port");
+        print("loaded $ip and $port");
+    }).whenComplete((){
+      ipCtrl = new TextEditingController();
+      portCtrl = new TextEditingController();
+      ipCtrl.text = ip.toString();
+      portCtrl.text = port.toString();
+      setState(() {});
+    });
+
     super.initState();
   }
 
-  _loadIpPort()async{
-    sp = await SharedPreferences.getInstance();
-    ip = sp.getString("ip");
-    port = sp.getInt("port");
-    print("loaded $ip and $port");
-  }
+
 
   @override
   void dispose() {
@@ -49,7 +54,7 @@ class _SettingsState extends State<Settings>{
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: <Widget>[
-                      Align(alignment: Alignment.topLeft,child: Text("EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                      Align(alignment: Alignment.topLeft,child: Text("Server EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -77,6 +82,41 @@ class _SettingsState extends State<Settings>{
                         ),
                       ),
                       Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Align(alignment: Alignment.topLeft,child: Text("Device EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            width: deviceSize.width,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.grey.shade200),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
+                            ),
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: ipCtrl,)
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            width: deviceSize.width,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.grey.shade200),
+                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
+                            ),
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: portCtrl,)
+                        ),
+                      ),
+                      Text("What is the payment device ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
                     ],
                   ),
                 ),
