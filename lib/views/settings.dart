@@ -1,4 +1,5 @@
 
+import 'package:altapay_link_mpos/main.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,25 +8,16 @@ class Settings extends StatefulWidget{
   _SettingsState createState() => new _SettingsState();
 }
 class _SettingsState extends State<Settings>{
-  SharedPreferences sp;
-  String ip = "";
-  int port = 0;
   TextEditingController ipCtrl, portCtrl;
 
   @override
   void initState() {
-    SharedPreferences.getInstance().then((sP){
-        this.sp = sP;
-        ip = sp.getString("ip");
-        port = sp.getInt("port");
-        print("loaded $ip and $port");
-    }).whenComplete((){
+
       ipCtrl = new TextEditingController();
       portCtrl = new TextEditingController();
-      ipCtrl.text = ip.toString();
-      portCtrl.text = port.toString();
-      setState(() {});
-    });
+      ipCtrl.text = sIp.toString();
+      portCtrl.text = sPort.toString();
+
 
     super.initState();
   }
