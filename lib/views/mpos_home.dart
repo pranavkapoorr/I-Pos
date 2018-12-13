@@ -52,8 +52,75 @@ class _MposHomeState extends State<MposHome>{
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Basic Configurations",style: TextStyle(color:Colors.white,fontSize: 25.0,fontWeight: FontWeight.w500),),
-                    )
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(alignment: Alignment.topCenter,child: Text("QUICK SETUP!",style: TextStyle(color:Colors.white,fontSize: 25.0,fontWeight: FontWeight.w500),)),
+                          ),
+                          Align(alignment: Alignment.topLeft,child: Text("Server EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.grey.shade200),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
+                                ),
+                                child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: null,)
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.grey.shade200),
+                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
+                                ),
+                                child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: null,)
+                            ),
+                          ),
+                          Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Align(alignment: Alignment.topLeft,child: Text("Device EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.grey.shade200),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
+                                ),
+                                child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller:null,)
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.grey.shade200),
+                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
+                                ),
+                                child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: null,)
+                            ),
+                          ),
+                          Text("What is the payment device ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
+                        ],
+                      ),
+                    ),
+                    Align(alignment: Alignment.center,child: FlatButton(textColor: Colors.white,onPressed: (){}, child: Text('Submit')),)
                   ]
               ))
       )
