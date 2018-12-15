@@ -1,7 +1,9 @@
+import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:altapay_link_mpos/views/mpos_functions.dart';
 import 'package:altapay_link_mpos/views/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:altapay_link_mpos/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MposHome extends StatefulWidget {
   @override
@@ -11,6 +13,9 @@ class MposHome extends StatefulWidget {
 
 class _MposHomeState extends State<MposHome>{
   int _currentIndex = 0;
+  TextEditingController sipctr;
+  TextEditingController sportctr;
+
   final List<Widget> _children = [
     new MposFunctions(),
     new Settings()
@@ -19,6 +24,8 @@ class _MposHomeState extends State<MposHome>{
   @override
   void initState() {
     super.initState();
+    sipctr = new TextEditingController();
+    sportctr = new TextEditingController();
   }
 
 
@@ -40,69 +47,92 @@ class _MposHomeState extends State<MposHome>{
       ),
     );
   }
-  Widget setUp()=>new Container(
-      child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Center(
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.deepOrange.shade400,
-                    borderRadius: BorderRadius.circular(10.0)
-                ),
-                child: new Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Align(alignment: Alignment.topCenter,child: Text("QUICK SETUP!",style: TextStyle(color:Colors.white,fontSize: 25.0,fontWeight: FontWeight.w500),)),
-                            ),
-                            Align(alignment: Alignment.topLeft,child: Text("Server EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(color: Colors.grey.shade200),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
-                                  ),
-                                  child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: null,)
+  Widget setUp(){
+    return new Container(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.deepOrange.shade400,
+                      borderRadius: BorderRadius.circular(10.0)
+                  ),
+                  child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Align(alignment: Alignment.topCenter,child: Text("QUICK SETUP!",style: TextStyle(color:Colors.white,fontSize: 25.0,fontWeight: FontWeight.w500),)),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(color: Colors.grey.shade200),
-                                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
-                                  ),
-                                  child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: null,)
+                              Align(alignment: Alignment.topLeft,child: Text("Server EndPoints",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                    padding: EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.grey.shade200),
+                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
+                                    ),
+                                    child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: sipctr,)
+                                ),
                               ),
-                            ),
-                            Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                    padding: EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.grey.shade200),
+                                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
+                                    ),
+                                    child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: sportctr,)
+                                ),
+                              ),
+                              Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){}, child: Text('Submit')),),
-                      )
-                    ]
-                )),
-          )
-      )
-  );
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
+                            print("sp-> $sp ,sipctr->  ${sipctr.text}, sportctr-> ${sportctr.text}");
+                            sIp =  sipctr.text;
+                            sPort = int.parse(sportctr.text);
+                            SharedPreferences.getInstance().then((sp) {
+                              sp.setString("sIp", sIp).then((lol) =>
+                                  sp.setInt("sPort", sPort)).whenComplete(() {
+                                connection.connect(sIp, sPort);
+                                setState(() {
 
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+                                });
+                              });
+                            });
+                          }, child: Text('Submit')),),
+                        )
+                      ]
+                  )
+              ),
+            )
+        )
+    );
   }
 
+
+    void onTabTapped(int index) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
+
+  @override
+  void dispose() {
+    sipctr.dispose();
+    sportctr.dispose();
+    super.dispose();
+  }
 }

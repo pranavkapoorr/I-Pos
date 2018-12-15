@@ -1,7 +1,6 @@
 
 import 'package:altapay_link_mpos/main.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget{
   @override
