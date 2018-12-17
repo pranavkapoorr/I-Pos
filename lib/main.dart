@@ -10,9 +10,9 @@ var sIp, sPort, pIp, pPort;
 
 void main()async{
   sp = await SharedPreferences.getInstance();
-  sIp = sp.getString("sPort");
+  sIp = sp.getString("sIp");
   sPort = sp.getInt("sPort");
-  pIp = sp.getString("pPort");
+  pIp = sp.getString("pIp");
   pPort = sp.getInt("pPort");
   print("lodaded ip nd port : $sIp and $sPort");
   if(sIp != null && sPort != null && pIp !=null && pPort!=null){

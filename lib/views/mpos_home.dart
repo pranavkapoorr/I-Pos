@@ -15,6 +15,7 @@ class _MposHomeState extends State<MposHome>{
   int _currentIndex = 0;
   TextEditingController sipctr;
   TextEditingController sportctr;
+  String ip,port;
 
   final List<Widget> _children = [
     new MposFunctions(),
@@ -24,6 +25,8 @@ class _MposHomeState extends State<MposHome>{
   @override
   void initState() {
     super.initState();
+    ip = sIp;
+    port = sPort;
     sipctr = new TextEditingController();
     sportctr = new TextEditingController();
   }
@@ -100,10 +103,11 @@ class _MposHomeState extends State<MposHome>{
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
-                            print("sp-> $sp ,sipctr->  ${sipctr.text}, sportctr-> ${sportctr.text}");
+                            print("sipctr->  ${sipctr.text}, sportctr-> ${sportctr.text}");
                             sIp =  sipctr.text;
                             sPort = int.parse(sportctr.text);
                             SharedPreferences.getInstance().then((sp) {
+                              print("sp-> $sp ");
                               sp.setString("sIp", sIp).then((lol) =>
                                   sp.setInt("sPort", sPort)).whenComplete(() {
                                 connection.connect(sIp, sPort);
