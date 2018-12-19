@@ -2,21 +2,21 @@ import 'package:altapay_link_mpos/views/mpos_home.dart';
 import 'package:flutter/material.dart';
 import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import './utils/globals.dart' ;
 
 
 
 SharedPreferences sp;
-var sIp, sPort, pIp, pPort;
 
 void main()async{
   sp = await SharedPreferences.getInstance();
-  sIp = sp.getString("sIp");
-  sPort = sp.getInt("sPort");
-  pIp = sp.getString("pIp");
-  pPort = sp.getInt("pPort");
-  print("lodaded ip nd port : $sIp and $sPort");
-  if(sIp != null && sPort != null && pIp !=null && pPort!=null){
-    connection.connect("192.168.0.69", sPort);
+  globals.sIP = sp.getString("sIp");
+  globals.sPORT = sp.getInt("sPort").toString();
+  globals.pIP = sp.getString("pIp");
+  globals.pPORT = sp.getInt("pPort").toString();
+  print("lodaded ip nd port : ${globals.sIP} and ${globals.sPORT}");
+  if(globals.sIP != null && globals.sPORT != null){
+    connection.connect(globals.sIP, int.parse(globals.sPORT));
   }
   runApp(new MyApp());
 }

@@ -1,5 +1,5 @@
 
-import 'package:altapay_link_mpos/main.dart';
+import '../utils/globals.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget{
@@ -14,8 +14,8 @@ class _SettingsState extends State<Settings>{
 
       ipCtrl = new TextEditingController();
       portCtrl = new TextEditingController();
-      ipCtrl.text = sIp.toString();
-      portCtrl.text = sPort.toString();
+      ipCtrl.text = globals.sIp;
+      portCtrl.text = globals.sPort;
 
 
     super.initState();
