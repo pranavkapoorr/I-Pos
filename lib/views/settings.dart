@@ -1,4 +1,5 @@
 
+import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget{
@@ -17,9 +18,14 @@ class _SettingsState extends State<Settings>{
 
       sipCtrl = new TextEditingController();
       sportCtrl = new TextEditingController();
+      pipCtrl = new TextEditingController();
+      pportCtrl = new TextEditingController();
       sipCtrl.text = widget.sIp;
       sportCtrl.text = widget.sPort;
-
+      if(widget.pPort != null && widget.pIp != null){
+        pipCtrl.text = widget.pIp;
+        pportCtrl.text = widget.pPort;
+      }
 
     super.initState();
   }
@@ -28,6 +34,10 @@ class _SettingsState extends State<Settings>{
 
   @override
   void dispose() {
+    sipCtrl.dispose();
+    sportCtrl.dispose();
+    pipCtrl.dispose();
+    pportCtrl.dispose();
     super.dispose();
   }
 
@@ -119,7 +129,7 @@ class _SettingsState extends State<Settings>{
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: <Widget>[
-                      Align(alignment: Alignment.topLeft,child: Text("Visibility",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
+                      Align(alignment: Alignment.topLeft,child: Text("Reconnect",style: TextStyle(color:Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500),)),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
@@ -134,7 +144,9 @@ class _SettingsState extends State<Settings>{
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text("Reload",style: TextStyle(color: Colors.black,fontSize: 14.0,fontWeight: FontWeight.normal)),
-                                    IconButton(icon: Icon(Icons.refresh), onPressed: (){})
+                                    IconButton(icon: Icon(Icons.refresh), onPressed: (){
+                                      connection.connect(sipCtrl.text, int.parse(sportCtrl.text));
+                                    })
                                   ],
                                 ),
                               ),
@@ -142,7 +154,7 @@ class _SettingsState extends State<Settings>{
                           ],
                         ),
                       ),
-                      Text("Would you like to be searched by everyone..?",style: TextStyle(color: Colors.white70,fontSize: 12.0))
+                      Text("Would you like to connect again to the service..?",style: TextStyle(color: Colors.white70,fontSize: 12.0))
                     ],
                   ),
                 ),
