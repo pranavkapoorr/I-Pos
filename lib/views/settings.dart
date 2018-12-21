@@ -1,21 +1,24 @@
 
-import '../utils/globals.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget{
+  String sIp,sPort,pIp,pPort;
+
+  Settings({this.sIp,this.sPort,this.pIp,this.pPort});
+
   @override
   _SettingsState createState() => new _SettingsState();
 }
 class _SettingsState extends State<Settings>{
-  TextEditingController ipCtrl, portCtrl;
+  TextEditingController sipCtrl, sportCtrl,pipCtrl, pportCtrl;
 
   @override
   void initState() {
 
-      ipCtrl = new TextEditingController();
-      portCtrl = new TextEditingController();
-      ipCtrl.text = globals.sIp;
-      portCtrl.text = globals.sPort;
+      sipCtrl = new TextEditingController();
+      sportCtrl = new TextEditingController();
+      sipCtrl.text = widget.sIp;
+      sportCtrl.text = widget.sPort;
 
 
     super.initState();
@@ -56,7 +59,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: ipCtrl,)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: sipCtrl,)
                         ),
                       ),
                       Padding(
@@ -69,7 +72,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: portCtrl,)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: sportCtrl,)
                         ),
                       ),
                       Text("What is the service ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
@@ -91,7 +94,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: ipCtrl,)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Ip address"),controller: pipCtrl,)
                         ),
                       ),
                       Padding(
@@ -104,7 +107,7 @@ class _SettingsState extends State<Settings>{
                                 border: Border.all(color: Colors.grey.shade200),
                                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
                             ),
-                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: portCtrl,)
+                            child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: pportCtrl,)
                         ),
                       ),
                       Text("What is the payment device ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)

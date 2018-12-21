@@ -2,7 +2,6 @@ import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:altapay_link_mpos/views/mpos_functions.dart';
 import 'package:altapay_link_mpos/views/settings.dart';
 import 'package:flutter/material.dart';
-import '../utils/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MposHome extends StatefulWidget {
@@ -12,21 +11,39 @@ class MposHome extends StatefulWidget {
 }
 
 class _MposHomeState extends State<MposHome>{
+  SharedPreferences sp;
   int _currentIndex = 0;
   TextEditingController sipctr;
   TextEditingController sportctr;
+  String sIp,sPort,pIp,pPort;
 
-  final List<Widget> _children = [
-    new MposFunctions(),
-    new Settings()
-  ];
+  List<Widget> _children;
 
   @override
   void initState() {
     super.initState();
-
+    _loadSPAndConnect();
     sipctr = new TextEditingController();
     sportctr = new TextEditingController();
+  }
+
+  _loadSPAndConnect()async{
+    sp = await SharedPreferences.getInstance();
+    sIp = sp.getString("sIp");
+    sPort = sp.getInt("sPort").toString();
+    pIp = sp.getString("pIp");
+    pPort = sp.getInt("pPort").toString();
+    print("lodaded ip nd port : $sIp and $sPort");
+    _children = [
+    new MposFunctions(),
+    new Settings(sIp: sIp,sPort: sPort,)
+    ];
+    setState(() {
+      //to change ui if sip sport already there
+    });
+    if(sIp != null && sPort != null){
+      connection.connect(sIp, int.parse(sPort));
+    }
   }
 
 
@@ -37,7 +54,7 @@ class _MposHomeState extends State<MposHome>{
         appBar: new AppBar(
           elevation: 0.0,
         title: new Text("A-POS",style: new TextStyle(fontSize:30.0,color: Theme.of(context).accentColor),),),
-      body: (globals.sIp != null && globals.sPort != null)?_children[_currentIndex]:setUp(),
+      body: (sIp != null && sPort != null)?_children[_currentIndex]:setUp(),
       bottomNavigationBar: BottomNavigationBar(onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: [
@@ -102,24 +119,21 @@ class _MposHomeState extends State<MposHome>{
                           padding: const EdgeInsets.all(8.0),
                           child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
                             print("sipctr->  ${sipctr.text}, sportctr-> ${sportctr.text}");
-                            globals.sIp =  sipctr.text;
-                            globals.sPort = sportctr.text;
-                            SharedPreferences.getInstance().then((sp) {
-                              print("sp-> $sp ");
-                              sp.setString("sIp", globals.sIp).then((lol) =>
-                                  sp.setInt("sPort", int.parse(globals.sPort))).whenComplete(() {
-                                connection.connect(globals.sIp, int.parse(globals.sPort));
+                            sIp =  sipctr.text;
+                            sPort = sportctr.text;
+                              sp.setString("sIp", sIp).then((lol) =>
+                                  sp.setInt("sPort", int.parse(sPort))).whenComplete(() {
+                                connection.connect(sIp, int.parse(sPort));
                                 setState(() {
 
                                 });
                               });
-                            });
                           }, child: Text('Submit')),),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
-                            print("${globals.sIp} and x ${globals.sPort}");
+                            print("$sIp and x $sPort");
 
                           }, child: Text('Submit')),),
                         )
