@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'AltaPay-Link Pax',
+      title: 'A-Link',
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       theme: new ThemeData(
