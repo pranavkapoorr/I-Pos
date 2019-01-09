@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       theme: new ThemeData(
-          primaryColor: new Color(0xffF4F4F4),
-          accentColor: new Color(0xffA1A9A9)
+          //primaryColor: new Color(0xffF4F4F4),
+          //accentColor: new Color(0xffA1A9A9)
       ),
       home: new MposHome(),
     );
