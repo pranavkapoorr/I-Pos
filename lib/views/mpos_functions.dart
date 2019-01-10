@@ -83,36 +83,50 @@ class _MposFunctionsState extends State<MposFunctions>{
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"300"}');
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
                         }, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Refund","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
+                        }, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("REVERSAL",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Reversal","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
+                        }, child: new Text("REVERSAL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("FIRST DLL",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"FirstDll","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"120"}');
+                        }, child: new Text("FIRST DLL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("UPDATE DLL",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"UpdateDll","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"120"}');
+                        }, child: new Text("UPDATE DLL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PED BALANCE",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"PedBalance","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"60"}');
+                        }, child: new Text("PED BALANCE",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("END OF DAY",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"EndOfDay","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"60"}');
+                        }, child: new Text("END OF DAY",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){}, child: new Text("PROBE PED",style: TextStyle(color: Colors.grey),)))),
+                        child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"ProbePed","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"10"}');
+                        }, child: new Text("PROBE PED",style: TextStyle(color: Colors.grey),)))),
                       ),
                     ],
                   ),
