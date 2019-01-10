@@ -52,8 +52,9 @@ class _MposHomeState extends State<MposHome>{
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
+          backgroundColor: Colors.deepOrange.shade400,
           elevation: 0.0,
-        title: new Text("A-POS",style: new TextStyle(fontSize:30.0,color: Theme.of(context).accentColor),),),
+        title: new Text("A-POS",style: new TextStyle(fontSize:30.0,color: Colors.white),),),
       body: (sIp != null && sPort != null)?_children[_currentIndex]:setUp(),
       bottomNavigationBar: BottomNavigationBar(onTap: onTabTapped,
         currentIndex: _currentIndex,
