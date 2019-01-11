@@ -1,6 +1,10 @@
 import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:flutter/material.dart';
 class MposFunctions extends StatefulWidget {
+  String pIp,pPort;
+
+  MposFunctions({this.pIp,this.pPort});
+
   @override
   _MposFunctionsState createState() => _MposFunctionsState();
 
@@ -83,49 +87,49 @@ class _MposFunctionsState extends State<MposFunctions>{
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
                         }, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Refund","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
+                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Refund","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
                         }, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Reversal","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"30"}');
+                          connection.writeToConnection('{"transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Reversal","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
                         }, child: new Text("REVERSAL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"FirstDll","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"120"}');
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"FirstDll","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"120"}');
                         }, child: new Text("FIRST DLL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"UpdateDll","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"120"}');
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"UpdateDll","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"120"}');
                         }, child: new Text("UPDATE DLL",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"PedBalance","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"60"}');
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"PedBalance","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"60"}');
                         }, child: new Text("PED BALANCE",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"EndOfDay","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"60"}');
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"EndOfDay","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"60"}');
                         }, child: new Text("END OF DAY",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"ProbePed","pedIp":"192.168.44.216","pedPort":"40002","timeOut":"10"}');
+                          connection.writeToConnection('{"printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"ProbePed","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"10"}');
                         }, child: new Text("PROBE PED",style: TextStyle(color: Colors.grey),)))),
                       ),
                     ],

@@ -35,7 +35,7 @@ class _MposHomeState extends State<MposHome>{
     pPort = sp.getInt("pPort").toString();
     print("lodaded ip nd port : $sIp and $sPort");
     _children = [
-    new MposFunctions(),
+    new MposFunctions(pIp: pIp,pPort: pPort),
     new Settings(sIp: sIp,sPort: sPort,pIp: pIp,pPort: pPort,)
     ];
     setState(() {
