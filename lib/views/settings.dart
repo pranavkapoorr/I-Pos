@@ -1,39 +1,43 @@
 
 import 'package:altapay_link_mpos/utils/tcp.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget{
-  String sIp,sPort,pIp,pPort;
-
-  Settings({this.sIp,this.sPort,this.pIp,this.pPort});
 
   @override
   _SettingsState createState() => new _SettingsState();
 }
 class _SettingsState extends State<Settings>{
   TextEditingController sipCtrl, sportCtrl,pipCtrl, pportCtrl;
+  SharedPreferences sp;
 
   @override
   void initState() {
-
       sipCtrl = new TextEditingController();
       sportCtrl = new TextEditingController();
       pipCtrl = new TextEditingController();
       pportCtrl = new TextEditingController();
-      sipCtrl.text = widget.sIp;
-      sportCtrl.text = widget.sPort;
-      if(widget.pPort != null && widget.pIp != null){
-        pipCtrl.text = widget.pIp;
-        pportCtrl.text = widget.pPort;
-      }
+      _loadSharedPrefs();
 
     super.initState();
   }
 
+  _loadSharedPrefs()async {
+    sp = await SharedPreferences.getInstance();
+    sipCtrl.text = sp.getString("sIp");
+    sportCtrl.text = sp.getInt("sPort").toString();
+    pipCtrl.text = sp.getString("pIp");
+    pportCtrl.text = sp.getInt("pPort").toString();
+  }
 
 
   @override
   void dispose() {
+    sp.setString("sIp", sipCtrl.text);
+    sp.setInt("sPort", int.parse(sportCtrl.text));
+    sp.setString("pIp", pipCtrl.text);
+    sp.setInt("pPort", int.parse(pportCtrl.text));
     sipCtrl.dispose();
     sportCtrl.dispose();
     pipCtrl.dispose();

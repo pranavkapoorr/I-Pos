@@ -36,7 +36,7 @@ class _MposHomeState extends State<MposHome>{
     print("lodaded ip nd port : $sIp and $sPort");
     _children = [
     new MposFunctions(pIp: pIp,pPort: pPort),
-    new Settings(sIp: sIp,sPort: sPort,pIp: pIp,pPort: pPort,)
+    new Settings()
     ];
     setState(() {
       //to change ui if sip sport already there

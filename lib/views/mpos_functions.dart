@@ -48,7 +48,7 @@ class _MposFunctionsState extends State<MposFunctions>{
                           border: Border.all(color: Colors.grey.shade200),
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0))
                       ),
-                      child: TextField(decoration: InputDecoration(hintText: "Amount in cents",border: InputBorder.none,prefixIcon: Icon(Icons.attach_money,)))
+                      child: TextField(controller: _amount,decoration: InputDecoration(hintText: "Amount in cents",border: InputBorder.none,prefixIcon: Icon(Icons.attach_money,)))
                   ),
                 ),
                 Padding(
@@ -61,7 +61,7 @@ class _MposFunctionsState extends State<MposFunctions>{
                           border: Border.all(color: Colors.grey.shade200),
                           borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0))
                       ),
-                      child: TextField(decoration: InputDecoration(hintText: "Transaction Reference",border: InputBorder.none,prefixIcon: Icon(Icons.note,)))
+                      child: TextField(controller:_transactionReference,decoration: InputDecoration(hintText: "Transaction Reference",border: InputBorder.none,prefixIcon: Icon(Icons.note,)))
                   ),
                 ),
                 /*new Padding(
@@ -87,13 +87,21 @@ class _MposFunctionsState extends State<MposFunctions>{
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
+                          if(_amount.text!="" && _transactionReference.text!=""){
+                              connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Payment","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
+                          }else{
+                            Scaffold.of(context).showSnackBar(new SnackBar(content: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[new Icon(Icons.error),Text("Amount and Transaction reference mandatory")],)));
+                          }
                         }, child: new Text("PAYMENT",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: new Container(width: 300.0,decoration: new BoxDecoration(borderRadius: new BorderRadius.all(new Radius.circular(10.0)),color: Colors.white) ,child: new SizedBox(child: new FlatButton(onPressed: (){
-                          connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Refund","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
+                          if(_amount.text!="" && _transactionReference.text!=""){
+                            connection.writeToConnection('{"amount":"${_amount.text}","transactionReference":"${_transactionReference.text}","printFlag":1,"statusMessageIp":"","statusMessagePort":"","operationType":"Refund","pedIp":"${widget.pIp}","pedPort":"${widget.pPort}","timeOut":"30"}');
+                          }else{
+                            Scaffold.of(context).showSnackBar(new SnackBar(content: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: <Widget>[new Icon(Icons.error),Text("Amount and Transaction reference mandatory")],)));
+                          }
                         }, child: new Text("REFUND",style: TextStyle(color: Colors.grey),)))),
                       ),
                       new Padding(
