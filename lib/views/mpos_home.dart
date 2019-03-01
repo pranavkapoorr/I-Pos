@@ -1,6 +1,6 @@
-import 'package:altapay_link_mpos/utils/tcp.dart';
-import 'package:altapay_link_mpos/views/mpos_functions.dart';
-import 'package:altapay_link_mpos/views/settings.dart';
+import 'package:v_pos/utils/tcp.dart';
+import 'package:v_pos/views/mpos_functions.dart';
+import 'package:v_pos/views/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

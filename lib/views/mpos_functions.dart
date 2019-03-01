@@ -1,4 +1,4 @@
-import 'package:altapay_link_mpos/utils/tcp.dart';
+import 'package:v_pos/utils/tcp.dart';
 import 'package:flutter/material.dart';
 class MposFunctions extends StatefulWidget {
   String pIp,pPort;

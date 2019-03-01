@@ -1,4 +1,4 @@
-import 'package:altapay_link_mpos/views/mpos_home.dart';
+import 'package:v_pos/views/mpos_home.dart';
 import 'package:flutter/material.dart';
 
 
