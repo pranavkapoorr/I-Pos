@@ -1,4 +1,4 @@
-package com.pranavkapoorr.altapaylinkmpos;
+package com.pranavkapoorr.valitorlinkmpos;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

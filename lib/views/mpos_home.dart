@@ -54,7 +54,7 @@ class _MposHomeState extends State<MposHome>{
         appBar: new AppBar(
           backgroundColor: Colors.deepOrange.shade400,
           elevation: 0.0,
-        title: new Text("A-POS",style: new TextStyle(fontSize:30.0,color: Colors.white),),),
+        title: new Text("V-POS",style: new TextStyle(fontSize:30.0,color: Colors.white),),),
       body: (sIp != null && sPort != null)?_children[_currentIndex]:setUp(),
       bottomNavigationBar: BottomNavigationBar(onTap: onTabTapped,
         currentIndex: _currentIndex,
@@ -118,7 +118,8 @@ class _MposHomeState extends State<MposHome>{
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
+                          child: Align(alignment: Alignment.center,
+                            child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
                             print("sipctr->  ${sipctr.text}, sportctr-> ${sportctr.text}");
                             sIp =  sipctr.text;
                             sPort = sportctr.text;
@@ -131,13 +132,6 @@ class _MposHomeState extends State<MposHome>{
                               });
                           }, child: Text('Submit')),),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Align(alignment: Alignment.center,child: FlatButton(shape: Border.all(color: Colors.white),splashColor: Colors.white,textColor: Colors.white,onPressed: (){
-                            print("$sIp and x $sPort");
-
-                          }, child: Text('Submit')),),
-                        )
                       ]
                   )
               ),

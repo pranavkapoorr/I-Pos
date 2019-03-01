@@ -274,9 +274,9 @@ class _SettingsState extends State<Settings>{
                               BorderRadius.all(Radius.circular(8.0)),
                               AboutListTile(
                                 icon: Icon(Icons.info,color:Colors.black),
-                                applicationName: "A-POS",
+                                applicationName: "V-POS",
                                 applicationIcon: Icon(Icons.people,color: Colors.grey),
-                                child: Text("A-POS",style: TextStyle(color: Colors.black,fontSize: 14.0,fontWeight: FontWeight.normal)),
+                                child: Text("V-POS",style: TextStyle(color: Colors.black,fontSize: 14.0,fontWeight: FontWeight.normal)),
                               ),
                             )
                           ],
