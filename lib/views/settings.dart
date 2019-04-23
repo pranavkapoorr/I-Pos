@@ -1,6 +1,7 @@
 import 'package:v_pos/utils/tcp.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:v_pos/views/device-finder.dart';
 
 class Settings extends StatefulWidget{
 
@@ -123,7 +124,12 @@ class _SettingsState extends State<Settings>{
                             child: TextField(decoration: InputDecoration.collapsed(hintText: "Enter Port"),controller: pportCtrl,)
                         ),
                       ),
-                      Text("What is the payment device ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),)
+                      Text("What is the payment device ip adress and port..?",style: TextStyle(color: Colors.white70,fontSize: 12.0),),
+                      FlatButton(
+                        color: Colors.white,
+                        onPressed: ()=> Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> new DeviceFinderScreen())),
+                        child: Text("Scan Network"),
+                      )
                     ],
                   ),
                 ),
