@@ -1,5 +1,5 @@
-# VPOS
+# I-POS
 
-mpos to connect to AltaPay-Link Server
+mpos to connect to IPS-Link Server
 
 
